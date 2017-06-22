@@ -1,5 +1,14 @@
-
+$oneGrid: 8.33333333333333333%;
 $black: #000000;
+$white: #ffffff;
+
+@mixin calcWidth($multiple) {
+  width: ($multiple * $oneGrid);
+}
+
+@mixin calcMarginRight($multiple) {
+  margin-right: ($multiple * $oneGrid);
+}
 
 @font-face {
   $font-name: 'CircularStdMedium';
@@ -7,27 +16,193 @@ $black: #000000;
   src: url('../assets/fonts/CircularStd-Medium.otf');
 }
 
+@font-face {
+  $font-name: 'CircularStdBook';
+  font-family: 'CircularStdBook';
+  src: url('../assets/fonts/CircularStd-Book.otf');
+}
+
+// GENERIC CLASSES \\
+
+html, body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	max-width: 2000px;
+}
+
+ul {
+	list-style: none;
+}
+
+.white {
+	color: $white;
+}
+
+.black {
+	color: $black;
+}
+
+.underline {
+	text-decoration: underline;
+}
+
+// END OF GENERIC CLASSES \\
+
 .menu_embed {
 	width: 80%;
 	height: 800px
 }
+
+#wrapper {
+	font-family: "CircularStd";
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+#page1, #page2, #page3 {
+	height:100vh;
+	@include calcWidth(12);
+	position: relative;
+	float: left;
+}
+
 #dynamicGlyf {
 	width: 125px;
 	height: 125px;
+	background-image: url('../assets/glyfSprite.png');
+	transform: translateX(-50%);
+	position: relative;
+	left: 50%;
+	background-position: 0 0;
+	background-repeat: no-repeat;
 }
 
 #mainNav {
-	font-family: "CircularStd";
-	width: 100%;
+	@include calcWidth(12);
 	height: 65px;
+	text-align: center;
 
 	a {
+		font-family: 'CircularStdBook';
 		text-decoration: none;
 		color: $black;
+		@include calcWidth(1);
+		margin: 0 2% 0 2%;
+		position: relative;
+    top: calc(50% - 10px);
 	}
 }
 
 #aboutSection {
+	float: left;
 	width: 100%;
+	height: calc(100% - 190px);
 	background-image: url('../assets/boards.jpg');
+	background-repeat: no-repeat;
+	background-position: 0 -10px;
+	background-size: cover;
+	position: relative;
+
+	#aboutSectionParagraphsWrapper {
+
+		height: 38vw;
+
+		.bold_white {
+			color: $white;
+			font-weight: bold;
+			@include calcWidth(6);
+			font-size: 3vw;
+	    width: 50%;
+	    position: relative;
+	    left: 50%;
+	    transform: translateX(-50%);
+
+	    &:first-child {
+	    	padding-top: 7%;
+	    }
+		}
+	}
+
+	#aboutSectionFooter {
+		position: absolute;
+		@include calcWidth(8.5);
+		left: 50%;
+		transform: translate(-35.5%, -50%);
+
+		ul {
+			position: absolute;
+	    top: 40%;
+	    width: 100%;
+	    padding: 0 0 0 0;
+
+	    li {
+	    	@include calcWidth(3);
+	    	float: left;
+
+	    	 span {
+					float: left;
+					margin-right: 5%;
+    			line-height: 35px;
+
+    			&.icon_text {
+    				// @include calcMarginRight(1.4);
+    			}
+				}
+	    }
+		}
+	}
+}
+
+#menuSection {
+	height: 100%;
+	
+	#menuSectionHeaderWrapper {
+		height: 190px;
+
+		p {
+			@include calcWidth(6);
+			position: relative;
+			font-size: 1.4rem;
+			left: 50%;
+	    transform: translateX(-50%);
+		}
+	}
+
+	#menu {
+		background-image: url('../assets/brownTexture.jpg');
+		background-repeat: repeat;
+		height: calc(100% - 380px);
+	}
+}
+
+.icon {
+	width: 35px;
+  height: 35px;
+  background-size: contain;
+  display: inline-block;
+
+	&.phone_white {
+		background-image: url('../assets/phoneWhite.svg');
+	}
+
+	&.snapchat_white {
+		background-image: url('../assets/snapchatWhite.svg');
+	}
+
+	&.instagram_white {
+		background-image: url('../assets/instagramWhite.svg');
+	}
+}
+
+.icon_text {
+	height: 35px;
+  display: inline-block;
+  font-family: 'CircularStdBook';
+
+  &.white {
+  	color: $white;
+  }
 }

@@ -1,3 +1,5 @@
+var dynamicGlyf = document.getElementById('dynamicGlyf');
+
 function uploadPdf() {
 
   var pdfInput = document.getElementById('menuUpload');
@@ -25,3 +27,9 @@ function uploadPdf() {
     console.log('No files found.');
   }
 }
+
+setInterval(function() {
+
+  var spritePosition = Math.floor((Math.random() * 20) + 1) * 125;
+  dynamicGlyf.style.backgroundPositionX = '-' + spritePosition+ 'px';
+}, 2000)
