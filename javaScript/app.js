@@ -30,6 +30,6 @@ function uploadPdf() {
 
 setInterval(function() {
 
-  var spritePosition = Math.floor((Math.random() * 20) + 1) * 125;
+  var spritePosition = Math.floor((Math.random() * 20) + 1) * 124.68;
   dynamicGlyf.style.backgroundPositionX = '-' + spritePosition+ 'px';
 }, 2000)

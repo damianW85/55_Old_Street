@@ -1,14 +1,39 @@
-$oneGrid: 8.33333333333333333%;
+
+@import "../neat/neat";
+
+$neat-grid: (
+  columns: 12,
+  gutter: 0px,
+);
+
+$neat-grid-mobile: (
+  columns: 12,
+  gutter: 0px,
+  media: 320px,
+);
+
+$neat-grid-tab: (
+  columns: 12,
+  gutter: 0px,
+  media: 700px,
+);
+
+$neat-grid-dsk: (
+  columns: 12,
+  gutter: 0px,
+  media: 1000px,
+);
+
+$neat-grid-xl: (
+  columns: 12,
+  gutter: 0px,
+  media: 2000px,
+);
+
 $black: #000000;
 $white: #ffffff;
-
-@mixin calcWidth($multiple) {
-  width: ($multiple * $oneGrid);
-}
-
-@mixin calcMarginRight($multiple) {
-  margin-right: ($multiple * $oneGrid);
-}
+$grey: #cccccc;
+$veryLightGrey: #f6f6f6;
 
 @font-face {
   $font-name: 'CircularStdMedium';
@@ -22,18 +47,44 @@ $white: #ffffff;
   src: url('../assets/fonts/CircularStd-Book.otf');
 }
 
+#pleaseRotate {
+	width: 100%;
+	height: 100%;
+	display: none;
+	position: fixed;
+	z-index: 99;
+}
+// SHOW ROTATE DEVICE MESSAGE IF DEVICE IS IS SWICHED TO LANDSCAPE WITHIN THIS WIDTH LIMIT. \\
+@media screen and (min-width: 320px) and (max-width: 1024px) and (orientation: landscape) {
+
+	#pleaseRotate {
+		display: block;
+	}
+	#page1, #page2, #page3 {
+		display: none;
+	}
+}
+
 // GENERIC CLASSES \\
 
 html, body {
-	width: 100%;
+	background-color: $white;
+	position: relative;
+	@include grid-column(12);
 	height: 100%;
 	margin: 0;
 	padding: 0;
+	left: 50%;
+	transform: translateX(-50%);
 	max-width: 2000px;
 }
 
 ul {
 	list-style: none;
+}
+
+a {
+	text-decoration: none;
 }
 
 .white {
@@ -48,6 +99,40 @@ ul {
 	text-decoration: underline;
 }
 
+.mobile_only {
+	overflow: hidden;
+ 	@include grid-media($neat-grid-mobile) {
+		display: inline;
+		height: 100%;
+	}
+	@include grid-media($neat-grid-tab) {
+		display: block;
+	  height: 0;
+	}
+}
+
+.vertical_devider {
+  width: 2px;
+  height: 75%;
+  position: absolute;
+  @include grid-push(6);
+  top: calc(50%);
+  transform: translateY(-50%);
+  background-color: $black;
+  @include grid-media($neat-grid-mobile) {
+		display: none;
+	}
+	@include grid-media($neat-grid-tab) {
+		display: inline-block;
+	}
+}
+
+.horizontal_devider {
+	@include grid-column(12);
+	height: 1px;
+	background-color: $grey;
+}
+
 // END OF GENERIC CLASSES \\
 
 .menu_embed {
@@ -58,15 +143,16 @@ ul {
 #wrapper {
 	font-family: "CircularStd";
 	position: relative;
-	width: 100%;
+	@include grid-column(12);
 	height: 100%;
 }
 
 #page1, #page2, #page3 {
 	height:100vh;
-	@include calcWidth(12);
+	@include grid-column(12);
 	position: relative;
-	float: left;
+	@include grid-container;
+	overflow: hidden;
 }
 
 #dynamicGlyf {
@@ -81,75 +167,119 @@ ul {
 }
 
 #mainNav {
-	@include calcWidth(12);
-	height: 65px;
+	@include grid-column(12);
+	height: 5%;
 	text-align: center;
 
 	a {
 		font-family: 'CircularStdBook';
-		text-decoration: none;
 		color: $black;
-		@include calcWidth(1);
 		margin: 0 2% 0 2%;
 		position: relative;
     top: calc(50% - 10px);
+  //   @include grid-media($neat-grid-mobile) {
+		// 	font-size: 2rem;
+		// }
+		// @include grid-media($neat-grid-tab) {
+		// 	font-size: 1.2rem;
+		// }
 	}
 }
 
 #aboutSection {
-	float: left;
-	width: 100%;
-	height: calc(100% - 190px);
+	@include grid-column(12);
+	height: calc(95% - 125px);
 	background-image: url('../assets/boards.jpg');
 	background-repeat: no-repeat;
-	background-position: 0 -10px;
+	background-position: right 0px;
 	background-size: cover;
 	position: relative;
 
-	#aboutSectionParagraphsWrapper {
+	> div {
+		@include grid-column(12);
+  }
 
-		height: 38vw;
+	#aboutSectionParagraphsWrapper {
+		@include grid-media($neat-grid-mobile) {
+			height: 75%;
+		}
+		@include grid-media($neat-grid-tab) {
+			height: 38vw;
+		}
+		@include grid-media($neat-grid-xl) {
+			height: 50rem;
+		}
 
 		.bold_white {
 			color: $white;
 			font-weight: bold;
-			@include calcWidth(6);
-			font-size: 3vw;
-	    width: 50%;
+			@include grid-column(6);
+			@include grid-push(3);
 	    position: relative;
-	    left: 50%;
-	    transform: translateX(-50%);
+	    margin-top: 1%;
+	    @include grid-media($neat-grid-mobile) {
+				@include grid-column(10);
+				@include grid-push(1);
+				font-size: 5.75vw;
+			}
+			@include grid-media($neat-grid-tab) {
+				@include grid-column(6);
+				@include grid-push(3);
+				font-size: 4vw;
+			}
+			@include grid-media($neat-grid-dsk) {
+				font-size: 3.3vw;
+			}
+	    @include grid-media($neat-grid-xl) {
+				font-size: 3.75rem;
+			}
 
 	    &:first-child {
-	    	padding-top: 7%;
+	    	padding-top: 5%;
 	    }
 		}
 	}
 
 	#aboutSectionFooter {
-		position: absolute;
-		@include calcWidth(8.5);
-		left: 50%;
-		transform: translate(-35.5%, -50%);
+		position: relative;
+		@include grid-media($neat-grid-mobile) {
+			margin-top: 0;
+			left: 0;
+			transform: translate(0%, 0%);
+			@include grid-column(12);
+			@include grid-push(1);
+		}
+		@include grid-media($neat-grid-tab) {
+			margin-top: 40vw;
+			@include grid-column(8.5);
+			left: 50%;
+			transform: translate(-35.5%, -50%);
+		}
+		@include grid-media($neat-grid-dsk) {
+			margin-top: 0;
+		}
+		@include grid-media($neat-grid-xl) {
+			margin-top: 0;
+		}
 
 		ul {
 			position: absolute;
-	    top: 40%;
-	    width: 100%;
+	    @include grid-column(12);
 	    padding: 0 0 0 0;
+	    @include grid-media($neat-grid-mobile) {
+				top: -5rem;	
+			}
+			@include grid-media($neat-grid-tab) {
+				top: 40%;
+			}
 
 	    li {
-	    	@include calcWidth(3);
-	    	float: left;
-
-	    	 span {
-					float: left;
-					margin-right: 5%;
-    			line-height: 35px;
-
-    			&.icon_text {
-    				// @include calcMarginRight(1.4);
-    			}
+	    	@include grid-media($neat-grid-mobile) {
+					@include grid-column(12);
+					padding-top: 5%;
+				}
+				@include grid-media($neat-grid-tab) {
+					@include grid-column(3);
 				}
 	    }
 		}
@@ -158,23 +288,262 @@ ul {
 
 #menuSection {
 	height: 100%;
+
+	> div {
+		@include grid-column(12);
+  }
 	
 	#menuSectionHeaderWrapper {
-		height: 190px;
+		height: calc(5% + 125px);
 
 		p {
-			@include calcWidth(6);
 			position: relative;
-			font-size: 1.4rem;
-			left: 50%;
-	    transform: translateX(-50%);
+			margin-top: 1%;
+			margin-bottom: 0;
+			@include grid-media($neat-grid-mobile) {
+				@include grid-column(10);
+				@include grid-push(1);
+				font-size: 0.95rem;
+			}
+			@include grid-media($neat-grid-tab) {
+				font-size: 1.2rem;
+				@include grid-column(6);
+				@include grid-push(3);
+			}
+
+			&:first-child {
+				@include grid-media($neat-grid-mobile) {
+					margin-top: 1%;
+				}
+				@include grid-media($neat-grid-dsk) {
+					margin-top: 2%;
+				}
+			}
 		}
 	}
 
-	#menu {
+	#menuWrapper {
 		background-image: url('../assets/brownTexture.jpg');
 		background-repeat: repeat;
 		height: calc(100% - 380px);
+
+		#menu {
+			background-image: url('../assets/55OldSt_Menu.jpg');
+			background-repeat: no-repeat;
+			height: 72%;
+	    width: 36rem;
+	    position: absolute;
+	   	left: 50%;
+	   	transform: translateX(-50%);
+	    background-size: cover;
+	    box-shadow: 3px 80px 15px #DDDDDD;
+	    top: 275px;
+	    z-index: 3;
+		}
+
+		#menuDuplicate {
+			@extend #menu;
+			box-shadow: none;
+			z-index: 2;
+			transform: rotate(4deg) translateX(-50%);
+    	width: 37rem;
+
+    	.shade_layer {
+		    background-color: #E9E9E9;
+		    opacity: 0.25;
+		    position: absolute;
+		    top: 0;
+		    left: 0;
+		    @include grid-column(12);
+		    height: 100%;
+			}
+		}
+	}
+}
+
+#contactSection {
+	height: 92vh;
+
+	> div {
+		@include grid-column(12);
+  }
+
+  #contactSectionHeaderWrapper {
+  	background-color: $veryLightGrey;
+  	position: relative;
+  	@include grid-media($neat-grid-mobile) {
+  		height: 125px;
+  	}
+  	@include grid-media($neat-grid-tab) {
+  		height: calc(5vh + 125px);
+  	}
+
+  	> div {
+  		position: relative;
+		  height: 100%;
+		  @include grid-media($neat-grid-mobile) {
+				@include grid-column(10);
+				@include grid-push(1);
+				transform: translateX(0);
+				left: 0;
+				float: none;
+			}
+			@include grid-media($neat-grid-tab) {
+				left: 50%;
+			  transform: translateX(-50%);
+			  @include grid-column(6);
+			}
+
+		  h2 {
+	  		@include grid-media($neat-grid-mobile) {
+					font-size: 2rem;
+					transform: translateY(0);
+					top: 10%;
+					@include grid-column(12);
+				}
+				@include grid-media($neat-grid-tab) {
+					font-size: 3vw;
+					top: 50%;
+	  			transform: translateY(-50%);
+	  			@include grid-column(7);
+				}
+				@include grid-media($neat-grid-xl) {
+					font-size: 3rem;
+				}
+	  		position: absolute;
+	  		margin: 0;
+	  	}
+
+			p {
+				@include grid-media($neat-grid-mobile) {
+					@include grid-column(12);
+					transform: translateY(0);
+					top: 78%;
+					float: none;
+					left: 0;
+					font-size: 0.62rem;
+				}
+				@include grid-media($neat-grid-tab) {
+					font-size: 1.4vw;
+					top: 50%;
+					transform: translateY(-50%);
+					left: 70%;
+					@include grid-column(5);
+				}
+				@include grid-media($neat-grid-xl) {
+					font-size: 1.5rem;
+				}
+				position: absolute;
+				margin: 0;
+			}
+  	}
+  }
+
+	#mapWrapper {
+		height: calc(70vh - 125px);
+
+		#map {
+			@include grid-column(12);
+			height: 100%;
+		}
+	}
+
+	#contactSectionFooter {
+		position: relative;
+		background-color: $veryLightGrey;
+		@include grid-media($neat-grid-mobile) {
+  		height: 22vh;
+  	}
+  	@include grid-media($neat-grid-tab) {
+  		height: 17vh;
+  	}
+
+		> div {
+			position: relative;
+		  height: 100%;
+		  @include grid-media($neat-grid-mobile) {
+				@include grid-column(10);
+				@include grid-push(1);
+				transform: translateX(0);
+				left: 0;
+			}
+			@include grid-media($neat-grid-tab) {
+				left: 50%;
+			  transform: translateX(-50%);
+			  @include grid-column(6);
+			}
+
+			h2 {
+				@include grid-media($neat-grid-mobile) {
+					font-size: 2rem;
+				}
+				@include grid-media($neat-grid-tab) {
+					font-size: 3vw;
+				}
+				@include grid-media($neat-grid-xl) {
+					font-size: 3rem;
+				}
+				position: relative;
+	  		margin: 0;
+	  		height: 25%;
+	  		line-height: 6.5vh;
+			}
+
+			ul {
+				@include grid-column(6);
+				position: relative;
+				margin: 0 0 0 0;
+				padding: 0 0 0 0;
+				height: 75%;
+
+				li {
+					position: relative;
+					top: 25%;
+					transform: translateY(-50%);
+					&:first-child {
+						@include grid-media($neat-grid-mobile) {
+							padding-top: 10%;
+						}
+						// @include grid-media($neat-grid-tab) {
+						// 	padding-top: 5%;
+						// }
+					}
+				}
+
+				&:nth-child(3) {
+					@include grid-media($neat-grid-mobile) {
+						left: 10%;
+					}
+					@include grid-media($neat-grid-tab) {
+						left: 20%;
+					}
+				}
+			}
+		}
+	}
+}
+
+#footer {
+	@include grid-media($neat-grid-mobile) {
+		@include grid-column(10);
+		@include grid-push(1);
+	}
+	@include grid-media($neat-grid-tab) {
+		@include grid-column(6);
+		@include grid-push(3);
+	}
+
+	.horizontal_devider {
+		position: relative;
+    margin: 5% 0 2% 0;
+	}
+
+	p {
+		font-size: 1vh;
+		@include grid-media($neat-grid-xl) {
+			font-size: 1.25rem;
+		}
+    color: #a1a1a1;
 	}
 }
 
@@ -183,6 +552,13 @@ ul {
   height: 35px;
   background-size: contain;
   display: inline-block;
+  float: left;
+  @include grid-media($neat-grid-mobile) {
+		zoom: 0.75;
+	}
+	@include grid-media($neat-grid-tab) {
+		zoom: 1;
+	}
 
 	&.phone_white {
 		background-image: url('../assets/phoneWhite.svg');
@@ -195,12 +571,41 @@ ul {
 	&.instagram_white {
 		background-image: url('../assets/instagramWhite.svg');
 	}
+	&.phone_black {
+		background-image: url('../assets/phoneBlack.svg');
+	}
+
+	&.snapchat_black {
+		background-image: url('../assets/snapchatBlack.svg');
+	}
+
+	&.instagram_black {
+		background-image: url('../assets/instagramBlack.svg');
+	}
+
+	&.email {
+		background-image: url('../assets/mail.svg');
+	}
 }
 
 .icon_text {
 	height: 35px;
   display: inline-block;
   font-family: 'CircularStdBook';
+  margin-right: 5%;
+  margin-left: 5%;
+  line-height: 35px;
+  @include grid-media($neat-grid-mobile) {
+		font-size: 0.9rem;
+		zoom: 0.8;
+	}
+	@include grid-media($neat-grid-tab) {
+		font-size: 0.76rem;
+		zoom: 1;
+	}
+  @include grid-media($neat-grid-dsk) {
+		font-size: 1.12rem;
+	}
 
   &.white {
   	color: $white;

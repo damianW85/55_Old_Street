@@ -1,9 +1,36 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="utf-8">
+		<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
 		<title>55 Old Street</title>
 		<link rel="stylesheet" type="text/css" href="css/styles.min.css">
+		 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApqTEbw_y9c0GSSRdmj0XyOLrE3mdJyWs"></script>
+        <script type="text/javascript">
+           
+            google.maps.event.addDomListener(window, 'load', init);
+        
+            function init() {
+               
+                var mapOptions = {
+                   
+                    zoom: 16,
+                    center: new google.maps.LatLng(26.220558576197572, 50.588918924331665),
+                    scrollwheel: false, 
+                    styles: [{"featureType":"all","elementType":"labels","stylers":[{"visibility":"o"}]},{"featureType":"all","elementType":"labels.text","stylers":[{"visibility":"on"}]},{"featureType":"all","elementType":"labels.text.fill","stylers":[{"color":"#000000"}]},{"featureType":"all","elementType":"labels.text.stroke","stylers":[{"color":"#ffffff"}]},{"featureType":"all","elementType":"labels.icon","stylers":[{"visibility":"on"}]},{"featureType":"administrative","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#ffffff"},{"visibility":"on"}]},{"featureType":"landscape","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"poi","elementType":"labels","stylers":[{"visibility":"simplified"}]},{"featureType":"poi","elementType":"labels.icon","stylers":[{"visibility":"on"},{"color":"#5d5454"}]},{"featureType":"road","elementType":"all","stylers":[{"weight":"3"}]},{"featureType":"road","elementType":"geometry.fill","stylers":[{"color":"#000000"},{"weight":1}]},{"featureType":"road","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"weight":"1"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"on"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"visibility":"off"}]}]
+                };
+                var mapElement = document.getElementById('map');
+                var map = new google.maps.Map(mapElement, mapOptions);
+                var marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(26.220558576197572, 50.588918924331665),
+                    map: map,
+                    icon: 'assets/marker.png'
+                });
+
+                google.maps.event.addDomListener(window, 'resize', function() {
+								    map.setCenter(mapOptions.center);
+								});
+            }
+    </script>
 	</head>
 
 	<body>
@@ -13,6 +40,7 @@
 			<object class="menu_embed" data="assets/menu.pdf" type="application/pdf">
 			  <embed class="menu_embed" src="assets/menu.pdf" type="application/pdf" />
 			</object> -->
+			<img id="pleaseRotate" src="assets/pleaseRotateDevice.jpg">
 			<div id="page1">
 
 				<div id="dynamicGlyf"></div>
@@ -65,8 +93,12 @@
 						</p>
 					</div>
 
-					<div id="menu">
-						// menu image goes here \\
+					<div id="menuWrapper">
+						
+						<div id="menu"></div>
+						<div id="menuDuplicate">
+							<div class="shade_layer"></div>
+						</div>
 
 						<div id="arrowIcon">
 							<p>
@@ -80,43 +112,52 @@
 			<div id="page3">
 				<section id="contactSection">
 					<div id="contactSectionHeaderWrapper">
-						<h2>
-							Don't be shy, come say hi!
-						</h2>
+						<div>
 
-						<span class="vertical_devider black"></span>
+							<h2>
+								Don't be shy,<br/> come say hi!
+							</h2>
 
-						<p class="address">
-							55 Old Street, Building 6, Osama Bin Zaid Av, Manama 338
-						</p>
+							<span class="vertical_devider"></span>
+
+							<p class="address">
+								55 Old Street<span class="mobile_only">,</span> Building 6<span class="mobile_only">,</span> Osama Bin Zaid Av<span class="mobile_only">,</span> Manama 338
+							</p>
+							
+						</div>
 					</div>
 
 					<div id="mapWrapper">
-						// map goes here \\
+						<div id="map"></div>
 					</div>
 
 					<div id="contactSectionFooter">
-						<h2>
-							Get in touch!
-						</h2>
 
-						<ul>
-							<li>
-								<span class="icon email"></span> <span class="icon_text">info@55oldst.com</span>
-							</li>
+						<div>
+							<h2>
+								Get in touch!
+							</h2>
 
-							<li>
-								<span class="icon phone_number"></span> <span class="icon_text">+973 39940090</span>
-							</li>
+							<ul>
+								<li><a href="">
+									<span class="icon email"></span> <span class="icon_text black">info@55oldst.com</span>
+								</li></a>
 
-							<li>
-								<span class="icon snap_chat"></span> <span class="icon_text">oldst55</span>
-							</li>
-							
-							<li>
-								<span class="icon instagram"></span> <span class="icon_text">55oldstreet</span>
-							</li>
-						</ul>
+								<li><a href="">
+									<span class="icon snapchat_black"></span> <span class="icon_text black">oldst55</span>
+								</li></a>
+							</ul>	
+
+							<ul>
+								<li><a href="">
+									<span class="icon phone_black"></span> <span class="icon_text black">+973 39940090</span></a>
+								</li>
+								
+								<li><a href="">
+									<span class="icon instagram_black"></span> <span class="icon_text black">55oldstreet</span>
+								</li></a>
+							</ul>
+						</div>
 					</div>
 				</section>
 
