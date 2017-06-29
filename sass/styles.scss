@@ -380,9 +380,9 @@ a {
   	@include grid-media($neat-grid-mobile) {
   		height: 125px;
   	}
-  	@include grid-media($neat-grid-tab) {
-  		height: calc(5vh + 125px);
-  	}
+  	// @include grid-media($neat-grid-tab) {
+  	// 	height: calc(5vh + 125px);
+  	// }
 
   	> div {
   		position: absolute;
@@ -458,7 +458,12 @@ a {
   }
 
 	#mapWrapper {
-		height: calc(70vh - 125px);
+		// height: calc(70vh - 125px);
+		height: calc(93vh - 267px);
+
+		@include grid-media($neat-grid-tab) {
+  		height: calc(93vh - 315px);
+  	}
 
 		#map {
 			@include grid-column(12);
@@ -470,10 +475,10 @@ a {
 		position: relative;
 		background-color: $veryLightGrey;
 		@include grid-media($neat-grid-mobile) {
-  		height: 22vh;
+  		height: 142px;
   	}
   	@include grid-media($neat-grid-tab) {
-  		height: 17vh;
+  		height: 185px;
   	}
 
 		> div {
@@ -483,11 +488,13 @@ a {
 				@include grid-push(1);
 				transform: translate(0, -50%);
 		  	top: 50%;
+		  	padding-top: 2px;
 			}
 			@include grid-media($neat-grid-tab) {
 				left: 50%;
 			  transform: translate(-50%, -50%);
 			  @include grid-column(6);
+			  padding-top: 0;
 			}
 
 			h2 {
@@ -557,7 +564,7 @@ a {
 
 	.horizontal_devider {
 		position: relative;
-    margin: 5% 0 2% 0;
+    margin: 3.5% 0 2% 0;
 	}
 
 	p {
