@@ -2,7 +2,36 @@
 <html>
 	<head>
 		<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
-		<title>55 Old Street</title>
+		<meta name="description" content="55 old st">
+		<meta name="keywords" content="55 old st">
+		<title>55 Old St.</title>
+		<link rel="apple-touch-icon" sizes="57x57" href="assets/favicons/apple-icon-57x57.png">
+		<link rel="apple-touch-icon" sizes="60x60" href="assets/favicons/apple-icon-60x60.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="assets/favicons/apple-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="assets/favicons/apple-icon-76x76.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="assets/favicons/apple-icon-114x114.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="assets/favicons/apple-icon-120x120.png">
+		<link rel="apple-touch-icon" sizes="144x144" href="assets/favicons/apple-icon-144x144.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="assets/favicons/apple-icon-152x152.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-icon-180x180.png">
+		<link rel="icon" type="image/png" sizes="192x192"  href="assets/favicons/android-icon-192x192.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="96x96" href="assets/favicons/favicon-96x96.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+		<link rel="manifest" href="assets/favicons/manifest.json">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="msapplication-TileImage" content="assets/favicons/android-icon-192x192.png">
+		<meta name="theme-color" content="#ffffff">
+		<meta property="og:url" content="assets/favicons/android-icon-192x192.png" />
+		<meta property="og:type" content="article" />
+		<meta property="og:title" content="55 old st" />
+		<meta property="og:description" content="55 Old St. is a café, kitchen, terrace and social space." />
+		<meta property="og:image" content="assets/favicons/android-icon-192x192.png"/>
+		<meta name="twitter:card" content="summary">
+		<meta name="twitter:site" content="@55oldst">
+		<meta name="twitter:title" content="55oldst">
+		<meta name="twitter:description" content="55 Old St. is a café, kitchen, terrace and social space.">
+
 		<link rel="stylesheet" type="text/css" href="css/styles.min.css">
 		 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApqTEbw_y9c0GSSRdmj0XyOLrE3mdJyWs"></script>
         <script type="text/javascript">
@@ -13,17 +42,22 @@
                
                 var mapOptions = {
                    
-                    zoom: 16,
-                    center: new google.maps.LatLng(26.220558576197572, 50.588918924331665),
+                    zoom: 19,
+                    center: new google.maps.LatLng(26.2154350, 50.59207),
                     scrollwheel: false, 
                     styles: [{"featureType":"all","elementType":"labels","stylers":[{"visibility":"o"}]},{"featureType":"all","elementType":"labels.text","stylers":[{"visibility":"on"}]},{"featureType":"all","elementType":"labels.text.fill","stylers":[{"color":"#000000"}]},{"featureType":"all","elementType":"labels.text.stroke","stylers":[{"color":"#ffffff"}]},{"featureType":"all","elementType":"labels.icon","stylers":[{"visibility":"on"}]},{"featureType":"administrative","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#ffffff"},{"visibility":"on"}]},{"featureType":"landscape","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"poi","elementType":"labels","stylers":[{"visibility":"simplified"}]},{"featureType":"poi","elementType":"labels.icon","stylers":[{"visibility":"on"},{"color":"#5d5454"}]},{"featureType":"road","elementType":"all","stylers":[{"weight":"3"}]},{"featureType":"road","elementType":"geometry.fill","stylers":[{"color":"#000000"},{"weight":1}]},{"featureType":"road","elementType":"geometry.stroke","stylers":[{"color":"#000000"},{"weight":"1"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"on"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"visibility":"off"}]}]
                 };
                 var mapElement = document.getElementById('map');
                 var map = new google.maps.Map(mapElement, mapOptions);
+                var icon = {
+							    url: 'assets/marker.png',
+							    anchor: new google.maps.Point(50, 50)
+							  };
                 var marker = new google.maps.Marker({
-                    position: new google.maps.LatLng(26.220558576197572, 50.588918924331665),
+                    position: new google.maps.LatLng(26.2154280, 50.59205),
                     map: map,
-                    icon: 'assets/marker.png'
+                    icon: icon,
+                    anchorPoint: new google.maps.Point(50, 50)
                 });
 
                 google.maps.event.addDomListener(window, 'resize', function() {
@@ -55,14 +89,14 @@
 						<a class="nav_link" href="#aboutSection">About</a>
 						<a class="nav_link" href="#page2">Menu</a>
 						<a class="nav_link" href="#page3">Contact</a>
-						<a class="nav_link mobile_only" href="">
-							<span class="icon phone_black"></span>+973 39940090
+						<a class="nav_link mobile_only" href="tel:+973 17441900">
+							<span class="icon phone_black"></span>+973 17441900
 						</a>
-						<a class="nav_link mobile_only" href="">
-							<span class="icon snapchat_black"></span>oldst55
+						<a class="nav_link mobile_only" href="mailto:info@55oldst.com">
+							<span class="icon email"></span>info@55oldst.com
 						</a>
-						<a class="nav_link mobile_only" href="">
-							<span class="icon instagram_black"></span>55oldstreet
+						<a class="nav_link mobile_only" href="https://www.instagram.com/55oldst/" target="_blank">
+							<span class="icon instagram_black"></span>55oldst
 						</a>
 					</nav>
 				</div>
@@ -71,26 +105,23 @@
 					<div id="aboutSectionParagraphsWrapper">
 
 						<h3 class="bold_white">
-							55 Old St. is a café, kitchen, terrace and social space. We’re almost ready to open (It’ll be worth the wait!)
-						</h3>
-
-						<h3 class="bold_white">
-							We know how busy you are, so be sure to <span class="underline white">save the date.</span>
+							55 Old St. is a café, kitchen, terrace and social space.
 						</h3>
 					</div>
 
 					<div id="aboutSectionFooter">
 						<ul>
-							<li><a href="">
-								<span class="icon phone_black"></span> <span class="icon_text black">+973 39940090</span>
+							<li><a href="tel:+973 17441900">
+								<span class="icon phone_white"></span> <span class="icon_text white">+973 17441900</span>
 							</a></li>
 
-							<li><a href="">
-								<span class="icon snapchat_black"></span> <span class="icon_text black">oldst55</span>
+							<li><a href="mailto:info@55oldst.com">
+								<span class="icon email_white"></span> <span class="icon_text white
+								">info@55oldst.com</span>
 							</a></li>
 
-							<li><a href="">
-								<span class="icon instagram_black"></span> <span class="icon_text black">55oldstreet</span>
+							<li><a href="https://www.instagram.com/55oldst/" target="_blank">
+								<span class="icon instagram_white"></span> <span class="icon_text white">55oldst</span>
 							</a></li>
 						</ul>
 					</div>
@@ -102,7 +133,8 @@
 					<div id="menuSectionHeaderWrapper">
 						<div>
 							<p>
-								Inspired by the bustling and hip areas of <span class="underline black">East London</span>, 55 Old St. has a dedicated performance stage (first floor), murals, private hire, coffee/cooking classes and a range of other cultural and social activities.
+								Inspired by the bustling and hip areas of East London, 55 Old St. is a cafe, kitchen, terrace, and a social space for performances, exhibitions, workshops, social activities and private hire.
+								<span class="underline black"></span>
 							</p> 
 
 							<p>
@@ -115,10 +147,10 @@
 						<div id="menu">
 							<h3 class="bold_white">
 								<a href="assets/menu.pdf" target="_blank"><span class="underline white">Click here</span></a> to see our Menu </br>
-								(Served from 15.09.17) </br>
+								<!-- (Served from 15.09.17) </br>
 								<span class="sub_heading">
 									Pop in for a coffee in the meantime!
-								</span>
+								</span> -->
 							</h3> 
 						</div>
 					</div>
@@ -131,13 +163,13 @@
 						<div>
 
 							<h2>
-								Spend 5 or 55,<br/> minutes with us!
+								Spend 5 or 55<br/> minutes with us!
 							</h2>
 
 							<span class="vertical_devider"></span>
 
 							<p class="address">
-								55 Old Street<span class="mobile_only">,</span> Building 6<span class="mobile_only">,</span> Osama Bin Zaid Av<span class="mobile_only">,</span> Manama 338
+								55 Old St<span class="mobile_only">,</span> Adliya 338<span class="mobile_only">,</span> Manama, Kingdom of Bahrain
 							</p>
 							
 						</div>
@@ -155,24 +187,16 @@
 							</h2>
 
 							<ul>
-								<li><a href="">
-									<span class="icon email"></span> <span class="icon_text black">info@55oldst.com</span>
-								</li></a>
-
-								<li><a href="">
-									<span class="icon snapchat_black"></span> <span class="icon_text black">oldst55</span>
-								</li></a>
-							</ul>	
-
-							<ul>
-								<li><a href="">
-									<span class="icon phone_black"></span> <span class="icon_text black">+973 39940090</span></a>
+								<li><a href="mailto:info@55oldst.com">
+									<span class="icon email"></span> <span class="icon_text black">info@55oldst.com</span></a>
 								</li>
-								
-								<li><a href="">
-									<span class="icon instagram_black"></span> <span class="icon_text black">55oldstreet</span>
-								</li></a>
-							</ul>
+								<li><a href="tel:+973 17441900">
+									<span class="icon phone_black"></span> <span class="icon_text black">+973 17441900</span></a>
+								</li>
+								<li><a href="https://www.instagram.com/55oldst/" target="_blank">
+									<span class="icon instagram_black"></span> <span class="icon_text black">55oldst</span></a>
+								</li>
+							</ul>	
 						</div>
 					</div>
 				</section>
@@ -181,7 +205,7 @@
 					<span class="horizontal_devider grey"></span>
 
 					<p>
-						55 Old Street is a company limited by guarantee No 04338561. Registered office: 55 Old Street, Building 6, Osama Bin Zaid Avenue, Manama 338. All rights reserved, trademarked.
+						55 Old Street is a company limited by guarantee No 04338561. Registered office: 55 Old St, Adliya 338, Manama, Kingdom of Bahrain. All rights reserved, trademarked.
 					</p>
 				</div>
 			</div>

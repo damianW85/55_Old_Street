@@ -30,7 +30,7 @@ function uploadPdf() {
 
 setInterval(function() {
 
-  var spritePosition = Math.floor((Math.random() * 20) + 1) * 124.68;
+  var spritePosition = Math.floor((Math.random() * 20) + 1) * 125;
   dynamicGlyf.style.backgroundPositionX = '-' + spritePosition+ 'px';
 }, 2000)
 
@@ -68,3 +68,12 @@ navLinks.forEach(function(navLink) {
     } 
   });
 });
+
+var nav = document.getElementById('mainNav');
+
+window.addEventListener('resize', function() {
+  if(window.innerWidth > 1000 && nav.classList.contains('nav_open')) {
+    navControl();
+    nav.classList.remove('nav_open');
+  }
+})
